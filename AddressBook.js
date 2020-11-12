@@ -40,15 +40,23 @@ class Contact {
         this.email = parameter[7];
     }
 }
+let addressBookArray = new Array();
+choice = prompt("Enter 1.add contacts 0.exit  ");
+if (choice == 1) {
+    firstName1 = prompt("Enter the first name :");
+    lastName1 = prompt("Enter the last name :");
+    address1 = prompt("Enter the address :");
+    city1 = prompt("Enter the city:");
+    state1 = prompt("Enter the state :");
+    zip1 = prompt("Enter the zip code :")
+    phoneNumber1 = prompt("Enter the phone Number :");
+    email1 = prompt("Enter the email :");
+}
 try {
-    let contact1 = new Contact("Ashwini", "Jadi", "dskr", "Hyderabad", "Telangana", 500025, 7899963310, "ashu@gmail.com");
-    console.log(contact1);
+    var contact = new Contact(firstName1, lastName1, address1, city1, state1, zip1, phoneNumber1, email1);
+    addressBookArray.push(contact);
 } catch (e) {
     console.log(e);
 }
-try {
-    let contact2 = new Contact("Asritha", "Durgam", "dskr", "Warangal", "Telangana", 504125, 9996223110, "asritha@gmail.com");
-    console.log(contact2);
-} catch (e) {
-    console.log(e);
-}
+console.log(addressBookArray);
+
