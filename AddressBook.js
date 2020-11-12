@@ -1,7 +1,5 @@
 //AddressBook Programming
-console.log("Welcome to addressBook programming");
 
-//UC1 Create AddressBook Contacts
 const prompt = require('prompt-sync')();
 const nameRegex = RegExp('^[A-Z]{1}[A-Za-z]{2,}$');
 const addressRegex = RegExp('^[A-Za-z0-9/,]{4,}$');
@@ -12,7 +10,6 @@ const phoneNumberRegex = RegExp('^[1-9]{1}[0-9]{9}$');
 const emailRegex = RegExp('[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}');
 
 class Contact {
-
     //constructors
     constructor(...parameter) {
         if (!nameRegex.test(parameter[0])) throw "Invalid firstname Exception"
@@ -35,7 +32,7 @@ class Contact {
 }
 let addressBookArray = new Array();
 do {
-    choice = prompt("Enter 1.add contacts 2.Edit contact 3.delete contact 4.count contacts 5.Search person by state 6.Search person by city 0.exit  ");
+    choice = prompt("Enter 1.add contacts 2.Edit contact 3.delete contact 4.count contacts 5.Search person by state 6.Search person by city 7.sort by person name 0.exit  ");
     if (choice == 1) {
         let firstName1 = prompt("Enter the first name :");
         if (addressBookArray.find(contact => contact.firstName == firstName1)) {
@@ -96,6 +93,10 @@ do {
         console.log("persons in this city are" + JSON.stringify(cityContacts));
         let cityCount = cityContacts.reduce(contacts => contacts + 1, 0);
         console.log("count of persons in this city are : " + cityCount);
+    }
+    if (choice == 7) {
+        let personSort = addressBookArray.sort();
+        console.log("sorted alphabetically" + JSON.stringify(personSort));
     }
 }
 while (choice != 0);
