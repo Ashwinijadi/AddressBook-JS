@@ -35,7 +35,7 @@ class Contact {
 }
 let addressBookArray = new Array();
 do {
-    choice = prompt("Enter 1.add contacts 2.Edit contact 0.exit  ");
+    choice = prompt("Enter 1.add contacts 2.Edit contact 3.delete contact 0.exit  ");
     if (choice == 1) {
         let firstName1 = prompt("Enter the first name :");
         let lastName1 = prompt("Enter the last name :");
@@ -52,15 +52,6 @@ do {
         } catch (e) {
             console.log(e);
         }
-        try {
-            let contact2 = new Contact("Arun", "Jadi", "dskr", "Hyderabad", "Telangana", 500025, 9899553310, "arun@gmail.com");
-            addressBookArray.push(contact2);
-            console.log("addressBook array is", addressBookArray);
-            console.log("include", addressBookArray.includes("Durgam"));
-        } catch (e) {
-            console.log(e);
-        }
-
     }
     if (choice == 2) {
         let Name = prompt("Enter the first name to edit:");
@@ -70,6 +61,16 @@ do {
             console.log("No such contact, please enter correct name ");
         else
             console.log(edit.firstName = changedName);
+        console.log(addressBookArray);
+    }
+
+    if (choice == 3) {
+        let Name = prompt("Enter the first name to delete:");
+        let deleted = addressBookArray.find(contact => contact.firstName == Name)
+        if (deleted == undefined)
+            console.log("No such contact, please enter correct name ");
+        else
+            addressBookArray.pop(deleted);
         console.log(addressBookArray);
     }
 }
