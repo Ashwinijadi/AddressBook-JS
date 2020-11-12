@@ -85,11 +85,13 @@ do {
     if (choice == 5) {
         let stateSearch = prompt("Enter the state name to search for person:");
         let StateCount = addressBookArray.filter(contact => contact.state == stateSearch);
+        console.log("persons in this state are" + JSON.stringify(StateCount));
     }
 
     if (choice == 6) {
         let citySearch = prompt("Enter the city name to search for person:");
         let cityCount = addressBookArray.filter(contact => contact.city == citySearch);
+        console.log("persons in this city are" + JSON.stringify(cityCount));
     }
 }
 while (choice != 0);
