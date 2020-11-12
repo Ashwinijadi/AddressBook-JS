@@ -35,7 +35,7 @@ class Contact {
 }
 let addressBookArray = new Array();
 do {
-    choice = prompt("Enter 1.add contacts 2.Edit contact 3.delete contact 4.count contacts 5.search person by state 0.exit  ");
+    choice = prompt("Enter 1.add contacts 2.Edit contact 3.delete contact 4.count contacts 5.Search person by state 6.Search person by city 0.exit  ");
     if (choice == 1) {
         let firstName1 = prompt("Enter the first name :");
         if (addressBookArray.find(contact => contact.firstName == firstName1)) {
@@ -81,6 +81,15 @@ do {
     if (choice == 4) {
         let count = addressBookArray.reduce(contacts => contacts + 1, 0)
         console.log("count is : " + count);
+    }
+    if (choice == 5) {
+        let stateSearch = prompt("Enter the state name to search for person:");
+        let StateCount = addressBookArray.filter(contact => contact.state == stateSearch);
+    }
+
+    if (choice == 6) {
+        let citySearch = prompt("Enter the city name to search for person:");
+        let cityCount = addressBookArray.filter(contact => contact.city == citySearch);
     }
 }
 while (choice != 0);
