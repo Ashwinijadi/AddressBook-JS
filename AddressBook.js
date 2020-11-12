@@ -12,14 +12,7 @@ const phoneNumberRegex = RegExp('^[1-9]{1}[0-9]{9}$');
 const emailRegex = RegExp('[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}');
 
 class Contact {
-    firstName;
-    lastName;
-    address;
-    city;
-    state;
-    zip;
-    phoneNumber;
-    email;
+
     //constructors
     constructor(...parameter) {
         if (!nameRegex.test(parameter[0])) throw "Invalid firstname Exception"
@@ -41,22 +34,43 @@ class Contact {
     }
 }
 let addressBookArray = new Array();
-choice = prompt("Enter 1.add contacts 0.exit  ");
-if (choice == 1) {
-    firstName1 = prompt("Enter the first name :");
-    lastName1 = prompt("Enter the last name :");
-    address1 = prompt("Enter the address :");
-    city1 = prompt("Enter the city:");
-    state1 = prompt("Enter the state :");
-    zip1 = prompt("Enter the zip code :")
-    phoneNumber1 = prompt("Enter the phone Number :");
-    email1 = prompt("Enter the email :");
-}
-try {
-    var contact = new Contact(firstName1, lastName1, address1, city1, state1, zip1, phoneNumber1, email1);
-    addressBookArray.push(contact);
-} catch (e) {
-    console.log(e);
-}
-console.log(addressBookArray);
+do {
+    choice = prompt("Enter 1.add contacts 2.Edit contact 0.exit  ");
+    if (choice == 1) {
+        let firstName1 = prompt("Enter the first name :");
+        let lastName1 = prompt("Enter the last name :");
+        let address1 = prompt("Enter the address :");
+        let city1 = prompt("Enter the city:");
+        let state1 = prompt("Enter the state :");
+        let zip1 = prompt("Enter the zip code :")
+        let phoneNumber1 = prompt("Enter the phone Number :");
+        let email1 = prompt("Enter the email :");
+        try {
+            var contact = new Contact(firstName1, lastName1, address1, city1, state1, zip1, phoneNumber1, email1);
+            addressBookArray.push(contact);
+            console.log(addressBookArray);
+        } catch (e) {
+            console.log(e);
+        }
+        try {
+            let contact2 = new Contact("Arun", "Jadi", "dskr", "Hyderabad", "Telangana", 500025, 9899553310, "arun@gmail.com");
+            addressBookArray.push(contact2);
+            console.log("addressBook array is", addressBookArray);
+            console.log("include", addressBookArray.includes("Durgam"));
+        } catch (e) {
+            console.log(e);
+        }
 
+    }
+    if (choice == 2) {
+        let Name = prompt("Enter the first name to edit:");
+        let changedName = prompt("Enter the Name changed :");
+        let edit = addressBookArray.find(contact => contact.firstName == Name)
+        if (edit == undefined)
+            console.log("No such contact, please enter correct name ");
+        else
+            console.log(edit.firstName = changedName);
+        console.log(addressBookArray);
+    }
+}
+while (choice != 0);
