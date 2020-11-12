@@ -32,7 +32,7 @@ class Contact {
 }
 let addressBookArray = new Array();
 do {
-    choice = prompt("Enter 1.add contacts 2.Edit contact 3.delete contact 4.count contacts 5.Search person by state 6.Search person by city 7.sort by person name 0.exit  ");
+    choice = prompt("Enter 1.add contacts 2.Edit contact 3.delete contact 4.count contacts 5.Search person by state 6.Search person by city 7.sort by person name 8.SortByCity 9.SortByState 10.sortByZip 0.exit");
     if (choice == 1) {
         let firstName1 = prompt("Enter the first name :");
         if (addressBookArray.find(contact => contact.firstName == firstName1)) {
@@ -97,6 +97,35 @@ do {
     if (choice == 7) {
         let personSort = addressBookArray.sort();
         console.log("sorted alphabetically" + JSON.stringify(personSort));
+    }
+    if (choice == 8) {
+        sortedByCity = sortbyCity();
+        console.log("sorted by city", sortedByCity);
+    }
+    if (choice == 9) {
+        sortedByState = sortbyState();
+        console.log("sorted by state", sortedByState);
+    }
+    if (choice == 10) {
+        sortedByZip = sortbyZip();
+        console.log("sorted by zip", sortedByZip);
+    }
+    function sortbyCity() {
+        return addressBookArray.sort((a, b) => {
+            return ((a.city < b.city) ? -1 : 1)
+        });
+    }
+
+    function sortbyState() {
+        return addressBookArray.sort((a, b) => {
+            return ((a.state < b.state) ? -1 : 1)
+        });
+    }
+
+    function sortbyZip() {
+        return addressBookArray.sort((a, b) => {
+            return ((a.zip < b.zip) ? -1 : 1)
+        });
     }
 }
 while (choice != 0);
