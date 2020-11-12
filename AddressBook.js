@@ -35,9 +35,13 @@ class Contact {
 }
 let addressBookArray = new Array();
 do {
-    choice = prompt("Enter 1.add contacts 2.Edit contact 3.delete contact 4.count contacts 0.exit  ");
+    choice = prompt("Enter 1.add contacts 2.Edit contact 3.delete contact 4.count contacts 5.search person by state 0.exit  ");
     if (choice == 1) {
         let firstName1 = prompt("Enter the first name :");
+        if (addressBookArray.find(contact => contact.firstName == firstName1)) {
+            console.log("dublicate Entry");
+            return;
+        }
         let lastName1 = prompt("Enter the last name :");
         let address1 = prompt("Enter the address :");
         let city1 = prompt("Enter the city:");
@@ -75,7 +79,7 @@ do {
     }
 
     if (choice == 4) {
-        let count = addressBookArray.reduce(contacts => contacts+1 , 0)
+        let count = addressBookArray.reduce(contacts => contacts + 1, 0)
         console.log("count is : " + count);
     }
 }
